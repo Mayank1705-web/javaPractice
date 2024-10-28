@@ -1,3 +1,37 @@
+public class MyThread implements Runnable  {
+    Thread t;
+    String name;
+    MyThread(String threadName) {
+        name = threadName;
+        t = new Thread(this, name);
+        System.out.println(t);
+        t.start();
+    }
+    public void run(){
+        try {
+            for(int i=1; i<5; i++){
+                System.out.println(i);
+                Thread.sleep(1000); 
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println(name+"Exit");
+    }
+}
 public class howToCreatAThread {
-    
+    public static void main(String[] args) {
+        MyThread mt1 = new MyThread("Thread 1");
+        MyThread mt2 = new MyThread("Thread 2");
+        MyThread mt3 = new MyThread("Thread 3");
+        try {
+            for(int i=1; i<5; i++){
+                System.out.println("Main"+i);
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+        System.out.println("Main Thread Exit");
+    }
 }
